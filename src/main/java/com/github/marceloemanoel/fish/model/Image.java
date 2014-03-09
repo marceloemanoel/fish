@@ -1,12 +1,15 @@
 package com.github.marceloemanoel.fish.model;
 
 import com.google.common.base.Objects;
+import com.google.gson.annotations.SerializedName;
 
 public class Image {
     private Long id;
     private String name;
     private String slug;
     private String distribution;
+
+    @SerializedName("public")
     private Boolean publicImage;
 
     public Long getId() {

@@ -1,10 +1,14 @@
 package com.github.marceloemanoel.fish;
 
+import com.github.marceloemanoel.fish.model.Image;
+import com.github.marceloemanoel.fish.model.ImageFilter;
+import com.google.common.base.Optional;
 import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 public class Demo {
 
@@ -13,11 +17,16 @@ public class Demo {
         Credentials credentials = getCredentials();
 
         Fish fish = new DefaultFish(gson);
-        System.out.println(fish.activeDroplets(credentials));
+        List<Image> images = fish.allImages(credentials, Optional.<ImageFilter>absent());
+        Image image = fish.showImage(credentials, images.get(0).getId());
+        System.out.println(images);
+        System.out.println(image);
+        System.out.println(fish.allRegions(credentials));
+        System.out.println(fish.allSizes(credentials));
     }
 
     private static Credentials getCredentials() throws IOException {
-        File fishConfigHome = new File(System.getenv("user.home"), ".fish");
+        File fishConfigHome = new File(System.getProperty("user.home"), ".fish");
         File fishConfigFile = new File(fishConfigHome, "credentials.properties");
 
         URL credentialsURL = fishConfigFile.exists() ? fishConfigFile.toURL()

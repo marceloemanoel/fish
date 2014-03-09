@@ -4,19 +4,9 @@ import com.github.marceloemanoel.fish.model.Droplet;
 
 import java.util.List;
 
-public class ListDropletsMessage {
+public class ListDropletsMessage extends DigitalOceanMessage {
 
-    private String status;
     private List<Droplet> droplets;
-    private String message;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public List<Droplet> getDroplets() {
         return droplets;
@@ -26,11 +16,4 @@ public class ListDropletsMessage {
         this.droplets = droplets;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
